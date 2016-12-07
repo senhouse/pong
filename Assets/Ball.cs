@@ -60,13 +60,13 @@ public class Ball : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = dir * speed;
 		}
 
-		//Hit Right Wall, add a point to Player 1
+		//Hit Right Wall, add a point to Player 1, increase difficulty
 		if (col.gameObject.name == "WallRight") {
 			player1Score += 1;
 			speed += 1;
 		}
 
-		//Hit Left Wall, add a point to Player 2
+		//Hit Left Wall, add a point to Player 2, increase difficulty
 		if (col.gameObject.name == "WallLeft") {
 			player2Score +=1;
 			speed += 1;

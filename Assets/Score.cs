@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Score : MonoBehaviour {
 
+	// instantiates all vars needed
 	public GameObject Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
 
-	// Use this for initialization
+	// starts visual score at 0
 	void Start () {
 		Score1DoubDig = GameObject.Find("Score1DoubDig");
 		Score1TopL = GameObject.Find("Score1TopL");
@@ -23,6 +24,7 @@ public class Score : MonoBehaviour {
 		Score1BottomL.GetComponent<Renderer>().enabled = true;
 		Score1Bottom.GetComponent<Renderer>().enabled = true;
 		Score1BottomR.GetComponent<Renderer>().enabled = true;
+
 		Score2DoubDig = GameObject.Find("Score2DoubDig");
 		Score2TopL = GameObject.Find("Score2TopL");
 		Score2Top = GameObject.Find("Score2Top");
@@ -41,8 +43,9 @@ public class Score : MonoBehaviour {
 		Score2BottomR.GetComponent<Renderer>().enabled = true;
 	}
 	
-	// Update is called once per frame
+	// updates score
 	void Update () {
+		//sets visual score variables to correspond with unity objects
 		Score1DoubDig = GameObject.Find("Score1DoubDig");
 		Score1TopL = GameObject.Find("Score1TopL");
 		Score1Top = GameObject.Find("Score1Top");
@@ -51,8 +54,21 @@ public class Score : MonoBehaviour {
 		Score1BottomL = GameObject.Find("Score1BottomL");
 		Score1Bottom = GameObject.Find("Score1Bottom");
 		Score1BottomR = GameObject.Find("Score1BottomR");
+		
+		Score2DoubDig = GameObject.Find("Score2DoubDig");
+		Score2TopL = GameObject.Find("Score2TopL");
+		Score2Top = GameObject.Find("Score2Top");
+		Score2TopR = GameObject.Find("Score2TopR");
+		Score2Mid = GameObject.Find("Score2Mid");
+		Score2BottomL = GameObject.Find("Score2BottomL");
+		Score2Bottom = GameObject.Find("Score2Bottom");
+		Score2BottomR = GameObject.Find("Score2BottomR");
+
+		//allows access to player1/2score from Ball.cs
 		GameObject ball = GameObject.Find("Ball");
 		Ball score = ball.GetComponent<Ball>();
+
+		//displays visual score based on player1score increments in Ball.cs
 		switch (score.player1Score)
 			{
 				case 1:
@@ -166,6 +182,7 @@ public class Score : MonoBehaviour {
 					Score1BottomR.GetComponent<Renderer>().enabled = true;
 					break;
 				default:
+				//for now, displays 0. but will end game
 					Score1DoubDig.GetComponent<Renderer>().enabled = false;
 					Score1TopL.GetComponent<Renderer>().enabled = true;
 					Score1Top.GetComponent<Renderer>().enabled = true;
@@ -176,14 +193,8 @@ public class Score : MonoBehaviour {
 					Score1BottomR.GetComponent<Renderer>().enabled = true;
 					break;
 			}
-		Score2DoubDig = GameObject.Find("Score2DoubDig");
-		Score2TopL = GameObject.Find("Score2TopL");
-		Score2Top = GameObject.Find("Score2Top");
-		Score2TopR = GameObject.Find("Score2TopR");
-		Score2Mid = GameObject.Find("Score2Mid");
-		Score2BottomL = GameObject.Find("Score2BottomL");
-		Score2Bottom = GameObject.Find("Score2Bottom");
-		Score2BottomR = GameObject.Find("Score2BottomR");
+
+		//displays visual score based on player2score increments in Ball.cs
 		switch (score.player2Score)
 			{
 				case 1:
