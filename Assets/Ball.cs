@@ -63,11 +63,13 @@ public class Ball : MonoBehaviour {
 		//Hit Right Wall, add a point to Player 1
 		if (col.gameObject.name == "WallRight") {
 			player1Score += 1;
+			speed += 1;
 		}
 
 		//Hit Left Wall, add a point to Player 2
 		if (col.gameObject.name == "WallLeft") {
 			player2Score +=1;
+			speed += 1;
 		}
 	}
 
