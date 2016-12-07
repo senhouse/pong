@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 	public float speed = 30;
+	public int player1Score = 0;
+	public int player2Score  = 0;
 
 	float hitFactor(Vector2 ballPos, Vector2 racketPos,
 					float racketHeight) {
@@ -56,6 +58,16 @@ public class Ball : MonoBehaviour {
 			
 			// Set Velocity with dir * speed
 			GetComponent<Rigidbody2D>().velocity = dir * speed;
+		}
+
+		//Hit Right Wall, add a point to Player 1
+		if (col.gameObject.name == "WallRight") {
+			player1Score += 1;
+		}
+
+		//Hit Left Wall, add a point to Player 2
+		if (col.gameObject.name == "WallLeft") {
+			player2Score +=1;
 		}
 	}
 
