@@ -10,11 +10,18 @@ public class AI : MonoBehaviour {
 		//sets ai to start racket direction randomly
 		Vector3 pos = transform.position;
     pos.y = Random.Range(-2, 2);
-    transform.position = pos;
+    //ensures racket doesnt start at middle zero pos
+    Vector3 badPos = new Vector3 (20,0,0);
+    if (pos == badPos){
+    	Vector3 goodPos = new Vector3 (20,2,0);
+    	transform.position = goodPos;
+    } else {
+    	transform.position = pos;
+    }
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void Update () {
 		//references ball
 		GameObject ball = GameObject.Find("Ball");
 		Ball ballscript = ball.GetComponent<Ball>();
