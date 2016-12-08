@@ -68,7 +68,7 @@ public class Ball : MonoBehaviour {
 
 		//Hit Left Wall, add a point to Player 2, increase difficulty
 		if (col.gameObject.name == "WallLeft") {
-			player2Score +=1;
+			player2Score += 1;
 			speed += 1;
 		}
 	}
