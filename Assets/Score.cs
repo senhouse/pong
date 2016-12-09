@@ -180,6 +180,7 @@ public class Score : MonoBehaviour {
 					Score1BottomL.GetComponent<Renderer>().enabled = false;
 					Score1Bottom.GetComponent<Renderer>().enabled = false;
 					Score1BottomR.GetComponent<Renderer>().enabled = true;
+					Time.timeScale = 0;
 					break;
 				default:
 				//for now, displays 0. but will end game
@@ -306,6 +307,7 @@ public class Score : MonoBehaviour {
 					Score2BottomL.GetComponent<Renderer>().enabled = false;
 					Score2Bottom.GetComponent<Renderer>().enabled = false;
 					Score2BottomR.GetComponent<Renderer>().enabled = true;
+					Time.timeScale = 0;
 					break;
 				default:
 					Score2DoubDig.GetComponent<Renderer>().enabled = false;

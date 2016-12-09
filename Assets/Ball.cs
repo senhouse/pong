@@ -25,10 +25,10 @@ public class Ball : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		// Note: 'col' holds the collision information. If the
-        // Ball collided with a racket, then:
-        //   col.gameObject is the racket
-        //   col.transform.position is the racket's position
-        //   col.collider is the racket's collider
+    //   Ball collided with a racket, then:
+    //   col.gameObject is the racket
+    //   col.transform.position is the racket's position
+    //   col.collider is the racket's collider
 
 
 
@@ -47,7 +47,7 @@ public class Ball : MonoBehaviour {
 		}
 
 		// Hit the right Racket?
-		if (col.gameObject.name == "RacketRight") {
+		if (col.gameObject.name == "RacketRight"){
 			// Calculate hit Factor
 			float y = hitFactor(transform.position,
 								col.transform.position,
@@ -59,6 +59,7 @@ public class Ball : MonoBehaviour {
 			// Set Velocity with dir * speed
 			GetComponent<Rigidbody2D>().velocity = dir * speed;
 		}
+
 
 		//Hit Right Wall, add a point to Player 1, increase difficulty
 		if (col.gameObject.name == "WallRight") {
