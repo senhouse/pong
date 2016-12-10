@@ -50,6 +50,7 @@
      <Compile Include="Assets\MoveRacket.cs" />
      <Compile Include="Assets\PongSounds.cs" />
      <Compile Include="Assets\Score.cs" />
+     <Compile Include="Assets\UI.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
