@@ -11,9 +11,9 @@ public class AI : MonoBehaviour {
 		Vector3 pos = transform.position;
     pos.y = Random.Range(-2, 2);
     //ensures racket doesnt start at middle zero pos
-    Vector3 badPos = new Vector3 (20,0,0);
+    Vector3 badPos = new Vector3 (23,0,0);
     if (pos == badPos){
-    	Vector3 goodPos = new Vector3 (20,2,0);
+    	Vector3 goodPos = new Vector3 (23,2,0);
     	transform.position = goodPos;
     } else {
     	transform.position = pos;
@@ -28,7 +28,7 @@ public class AI : MonoBehaviour {
 		//locks racket to y axis
 		Vector3 pos = transform.position;
     pos.z = 0;
-    pos.x = 20;
+    pos.x = 23;
     transform.position = pos;
     //determines ball's position from racket
 		Vector3 direction = ball.transform.position - transform.position;
