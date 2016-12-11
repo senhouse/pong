@@ -12,40 +12,48 @@ public class UI : MonoBehaviour {
 			resume = GameObject.Find("Resume");
 			options = GameObject.Find("Options");
 			mainMenu = GameObject.Find("MainMenu");
-			pauseMenu.GetComponent<Renderer>().enabled = false;
-			paused.GetComponent<Renderer>().enabled = false;
-			resume.GetComponent<Renderer>().enabled = false;
-			options.GetComponent<Renderer>().enabled = false;
-			mainMenu.GetComponent<Renderer>().enabled = false;
+			//pauseMenu.SetActive(false);
+			/*paused.SetActive(false);
+			resume.SetActive(false);
+			options.SetActive(false);
+			mainMenu.SetActive(false);*/
 	}
 	
 	void OnMouseDown()
      {
      	//Animator anim = GetComponent<Animator>();
-     	pauseMenu = GameObject.Find("PauseMenu");
+     	/*pauseMenu = GameObject.Find("PauseMenu");
      	paused = GameObject.Find("Paused");
 			resume = GameObject.Find("Resume");
 			options = GameObject.Find("Options");
-			mainMenu = GameObject.Find("MainMenu");
+			mainMenu = GameObject.Find("MainMenu");*/
      	//made object a collider first and tagged it
          if(gameObject.tag == "PauseButton"){
-             if(Time.timeScale == 1)
+             if(Time.timeScale > 0)
             {
                 Time.timeScale = 0;
-                pauseMenu.GetComponent<Renderer>().enabled = true;
-                paused.GetComponent<Renderer>().enabled = true;
-								resume.GetComponent<Renderer>().enabled = true;
-								options.GetComponent<Renderer>().enabled = true;
-								mainMenu.GetComponent<Renderer>().enabled = true;
+                //pauseMenu.SetActive(true);
+                /*paused.SetActive(true);
+								resume.SetActive(true);
+								options.SetActive(true);
+								mainMenu.SetActive(true);*/
                 
             } else if (Time.timeScale == 0){
                 Time.timeScale = 1;
-                pauseMenu.GetComponent<Renderer>().enabled = false;
-                paused.GetComponent<Renderer>().enabled = false;
-								resume.GetComponent<Renderer>().enabled = false;
-								options.GetComponent<Renderer>().enabled = false;
-								mainMenu.GetComponent<Renderer>().enabled = false;
+                //pauseMenu.SetActive(false);
+                /*paused.SetActive(false);
+								resume.SetActive(false);
+								options.SetActive(false);
+								mainMenu.SetActive(false);*/
             }
+          }
+          if(gameObject.tag == "Resume"){
+          			Time.timeScale = 1;
+                //pauseMenu.SetActive(false);
+                /*paused.SetActive(false);
+								resume.SetActive(false);
+								options.SetActive(false);
+								mainMenu.SetActive(false);*/
           }
      }
 
@@ -59,5 +67,16 @@ public class UI : MonoBehaviour {
 			  } else if (Time.timeScale == 1){
 			      pauseMenu.GetComponent<Renderer>().enabled = false;
 			  }*/
+			  foreach (Transform child in this.transform)
+         {
+             if (Time.timeScale > 0)
+             {
+                 child.gameObject.SetActive(false);
+             }
+             else
+             {
+                 child.gameObject.SetActive(true);
+             }
+         }
 	}
 }
