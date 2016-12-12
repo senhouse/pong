@@ -4,6 +4,8 @@ using System.Collections;
 public class UI : MonoBehaviour {
 	public GameObject pauseParent, pauseMenu, paused, options, mainMenu;
 	public bool gamePaused;
+	public bool onePlayerGame = true;
+
 	// Use this for initialization
 	void Start () {
 			/*anim = GetComponent<Animation>();

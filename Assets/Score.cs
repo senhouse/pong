@@ -42,6 +42,7 @@ public class Score : MonoBehaviour {
 		Score2Bottom.GetComponent<Renderer>().enabled = true;
 		Score2BottomR.GetComponent<Renderer>().enabled = true;
 
+		gameOverParent = GameObject.Find("GameOverParent");
 		foreach (Transform child in gameOverParent.transform)
 				{
 					child.gameObject.SetActive(false);
@@ -51,6 +52,7 @@ public class Score : MonoBehaviour {
 	void OnMouseDown() {
 		gameOverParent = GameObject.Find("GameOverParent");
 		if(gameObject.tag == "GameOverParent"){
+			Time.timeScale = 1;
 			foreach (Transform child in gameOverParent.transform)
 				{
 					child.gameObject.SetActive(false);
@@ -83,6 +85,9 @@ public class Score : MonoBehaviour {
 		GameObject ball = GameObject.Find("Ball");
 		Ball score = ball.GetComponent<Ball>();
 
+		GameObject menu = GameObject.Find("MainMenuParent");
+		UI ui = menu.GetComponent<UI>();
+
 		//displays visual score based on player1score increments in Ball.cs
 		switch (score.player1Score)
 			{
@@ -95,6 +100,16 @@ public class Score : MonoBehaviour {
 					Score1BottomL.GetComponent<Renderer>().enabled = false;
 					Score1Bottom.GetComponent<Renderer>().enabled = false;
 					Score1BottomR.GetComponent<Renderer>().enabled = true;
+					Time.timeScale = 0;
+					gameOverParent = GameObject.Find("GameOverParent");
+				  foreach (Transform child in gameOverParent.transform)
+						{
+							if (child.gameObject.name == "Black" || child.gameObject.name == "GameOver" || child.gameObject.name == "PlayerOneWins"){
+									child.gameObject.SetActive(true);
+							} else {
+									child.gameObject.SetActive(false);
+							}
+						}
 					break;
 				case 2:
 					Score1DoubDig.GetComponent<Renderer>().enabled = false;
@@ -199,9 +214,12 @@ public class Score : MonoBehaviour {
 					gameOverParent = GameObject.Find("GameOverParent");
 				  foreach (Transform child in gameOverParent.transform)
 						{
-							child.gameObject.SetActive(true);
+							if (child.gameObject.name == "Black" || child.gameObject.name == "GameOver" || child.gameObject.name == "PlayerOneWins"){
+									child.gameObject.SetActive(true);
+							} else {
+									child.gameObject.SetActive(false);
+							}
 						}
-					OnMouseDown();
 					break;
 				default:
 				//0
@@ -228,6 +246,24 @@ public class Score : MonoBehaviour {
 					Score2BottomL.GetComponent<Renderer>().enabled = false;
 					Score2Bottom.GetComponent<Renderer>().enabled = false;
 					Score2BottomR.GetComponent<Renderer>().enabled = true;
+					Time.timeScale = 0;
+					gameOverParent = GameObject.Find("GameOverParent");
+				  foreach (Transform child in gameOverParent.transform)
+						{
+							if (ui.onePlayerGame){
+								if (child.gameObject.name == "Black" || child.gameObject.name == "GameOver" || child.gameObject.name == "ComputerWins"){
+										child.gameObject.SetActive(true);
+								} else {
+										child.gameObject.SetActive(false);
+								}
+							} else {
+								if (child.gameObject.name == "Black" || child.gameObject.name == "GameOver" || child.gameObject.name == "PlayerTwoWins"){
+										child.gameObject.SetActive(true);
+								} else {
+										child.gameObject.SetActive(false);
+								}
+							}
+						}
 					break;
 				case 2:
 					Score2DoubDig.GetComponent<Renderer>().enabled = false;
@@ -329,8 +365,18 @@ public class Score : MonoBehaviour {
 					Score2Bottom.GetComponent<Renderer>().enabled = false;
 					Score2BottomR.GetComponent<Renderer>().enabled = true;
 					Time.timeScale = 0;
+					gameOverParent = GameObject.Find("GameOverParent");
+				  foreach (Transform child in gameOverParent.transform)
+						{
+							if (child.gameObject.name == "Black" || child.gameObject.name == "GameOver" || child.gameObject.name == "PlayerTwoWins"){
+									child.gameObject.SetActive(true);
+							} else {
+									child.gameObject.SetActive(false);
+							}
+						}
 					break;
 				default:
+				//0
 					Score2DoubDig.GetComponent<Renderer>().enabled = false;
 					Score2TopL.GetComponent<Renderer>().enabled = true;
 					Score2Top.GetComponent<Renderer>().enabled = true;
