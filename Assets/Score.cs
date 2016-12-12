@@ -4,7 +4,7 @@ using System.Collections;
 public class Score : MonoBehaviour {
 
 	// instantiates all vars needed
-	public GameObject Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
+	public GameObject gameOverParent, Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
 
 	// starts visual score at 0
 	void Start () {
@@ -41,8 +41,23 @@ public class Score : MonoBehaviour {
 		Score2BottomL.GetComponent<Renderer>().enabled = true;
 		Score2Bottom.GetComponent<Renderer>().enabled = true;
 		Score2BottomR.GetComponent<Renderer>().enabled = true;
+
+		foreach (Transform child in gameOverParent.transform)
+				{
+					child.gameObject.SetActive(false);
+				}
 	}
 	
+	void OnMouseDown() {
+		gameOverParent = GameObject.Find("GameOverParent");
+		if(gameObject.tag == "GameOverParent"){
+			foreach (Transform child in gameOverParent.transform)
+				{
+					child.gameObject.SetActive(false);
+				}
+		}
+	}
+
 	// updates score
 	void Update () {
 		//sets visual score variables to correspond with unity objects
@@ -181,9 +196,15 @@ public class Score : MonoBehaviour {
 					Score1Bottom.GetComponent<Renderer>().enabled = false;
 					Score1BottomR.GetComponent<Renderer>().enabled = true;
 					Time.timeScale = 0;
+					gameOverParent = GameObject.Find("GameOverParent");
+				  foreach (Transform child in gameOverParent.transform)
+						{
+							child.gameObject.SetActive(true);
+						}
+					OnMouseDown();
 					break;
 				default:
-				//for now, displays 0. but will end game
+				//0
 					Score1DoubDig.GetComponent<Renderer>().enabled = false;
 					Score1TopL.GetComponent<Renderer>().enabled = true;
 					Score1Top.GetComponent<Renderer>().enabled = true;

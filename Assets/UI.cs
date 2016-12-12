@@ -2,14 +2,15 @@ using UnityEngine;
 using System.Collections;
 
 public class UI : MonoBehaviour {
-	public GameObject pauseMenu, paused, resume, options, mainMenu;
+	public GameObject pauseParent, pauseMenu, paused, options, mainMenu;
+	public bool gamePaused;
 	// Use this for initialization
 	void Start () {
 			/*anim = GetComponent<Animation>();
 			anim.playAutomatically = false;*/
 			pauseMenu = GameObject.Find("PauseMenu");
 			paused = GameObject.Find("Paused");
-			resume = GameObject.Find("Resume");
+			//resume = GameObject.Find("Resume");
 			options = GameObject.Find("Options");
 			mainMenu = GameObject.Find("MainMenu");
 			//pauseMenu.SetActive(false);
@@ -32,6 +33,7 @@ public class UI : MonoBehaviour {
              if(Time.timeScale > 0)
             {
                 Time.timeScale = 0;
+                gamePaused = true;
                 //pauseMenu.SetActive(true);
                 /*paused.SetActive(true);
 								resume.SetActive(true);
@@ -40,15 +42,16 @@ public class UI : MonoBehaviour {
                 
             } else if (Time.timeScale == 0){
                 Time.timeScale = 1;
+                gamePaused = false;
                 //pauseMenu.SetActive(false);
                 /*paused.SetActive(false);
 								resume.SetActive(false);
 								options.SetActive(false);
 								mainMenu.SetActive(false);*/
             }
-          }
-          if(gameObject.tag == "Resume"){
+          } else if(gameObject.tag == "Resume"){
           			Time.timeScale = 1;
+          			gamePaused = false;
                 //pauseMenu.SetActive(false);
                 /*paused.SetActive(false);
 								resume.SetActive(false);
@@ -67,14 +70,13 @@ public class UI : MonoBehaviour {
 			  } else if (Time.timeScale == 1){
 			      pauseMenu.GetComponent<Renderer>().enabled = false;
 			  }*/
-			  foreach (Transform child in this.transform)
+			  pauseParent = GameObject.Find("PauseParent");
+			  foreach (Transform child in pauseParent.transform)
          {
-             if (Time.timeScale > 0)
-             {
+             if (Time.timeScale > 0) {
                  child.gameObject.SetActive(false);
              }
-             else
-             {
+             else if (Time.timeScale == 0 && gamePaused){
                  child.gameObject.SetActive(true);
              }
          }
