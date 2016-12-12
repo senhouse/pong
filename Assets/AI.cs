@@ -6,7 +6,7 @@ public class AI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
-		GameObject menu = GameObject.Find("MainMenuParent");
+		GameObject menu = GameObject.Find("GameScript");
 		UI ui = menu.GetComponent<UI>();
 		if (ui.onePlayerGame){
 			GameObject ball = GameObject.Find("Ball");
@@ -28,7 +28,7 @@ public class AI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
-		GameObject menu = GameObject.Find("MainMenuParent");
+		GameObject menu = GameObject.Find("GameScript");
 		UI ui = menu.GetComponent<UI>();
 		if (ui.onePlayerGame){
 			//references ball

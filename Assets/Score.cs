@@ -85,7 +85,7 @@ public class Score : MonoBehaviour {
 		GameObject ball = GameObject.Find("Ball");
 		Ball score = ball.GetComponent<Ball>();
 
-		GameObject menu = GameObject.Find("MainMenuParent");
+		GameObject menu = GameObject.Find("GameScript");
 		UI ui = menu.GetComponent<UI>();
 
 		//displays visual score based on player1score increments in Ball.cs
