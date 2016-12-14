@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour {
 
 	// instantiates all vars needed
-	public GameObject gameOverParent, Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
+	public GameObject gameOverParent, mainMenu, Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
+	public bool gameOverClose = false;
 
 	// starts visual score at 0
 	void Start () {
@@ -50,13 +52,10 @@ public class Score : MonoBehaviour {
 	}
 	
 	void OnMouseDown() {
-		gameOverParent = GameObject.Find("GameOverParent");
+		gameOverParent = GameObject.Find("GameOverMenu");
 		if(gameObject.tag == "GameOverParent"){
-			Time.timeScale = 1;
-			foreach (Transform child in gameOverParent.transform)
-				{
-					child.gameObject.SetActive(false);
-				}
+			gameOverClose = true;
+			
 		}
 	}
 
@@ -110,6 +109,19 @@ public class Score : MonoBehaviour {
 									child.gameObject.SetActive(false);
 							}
 						}
+
+					// score.player1Score = 0;
+					if (gameOverClose){
+						// foreach (Transform child in gameOverParent.transform){
+						// 	child.gameObject.SetActive(false);
+						// }
+						// mainMenu = GameObject.Find("MainMenuParent");
+					 //  foreach (Transform child in mainMenu.transform){
+		    //     	child.gameObject.SetActive(true);
+		    //     }
+		        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		      }
+					
 					break;
 				case 2:
 					Score1DoubDig.GetComponent<Renderer>().enabled = false;
@@ -374,6 +386,7 @@ public class Score : MonoBehaviour {
 									child.gameObject.SetActive(false);
 							}
 						}
+
 					break;
 				default:
 				//0
