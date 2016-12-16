@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Score : MonoBehaviour {
 
 	// instantiates all vars needed
-	public GameObject gameOverParent, mainMenu, Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
+	public GameObject gameOverParent, mainMenuParent, Score1DoubDig, Score1TopL, Score1Top, Score1TopR, Score1Mid, Score1BottomL, Score1Bottom, Score1BottomR, Score2DoubDig, Score2TopL, Score2Top, Score2TopR, Score2Mid, Score2BottomL, Score2Bottom, Score2BottomR;
 	public bool gameOverClose = false;
 
 	// starts visual score at 0
@@ -49,6 +49,7 @@ public class Score : MonoBehaviour {
 				{
 					child.gameObject.SetActive(false);
 				}
+		
 	}
 	
 	void OnMouseDown() {
