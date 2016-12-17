@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class AI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
 		GameObject menu = GameObject.Find("GameScript");
 		UI ui = menu.GetComponent<UI>();
-		if (ui.onePlayerGame){
-			GameObject ball = GameObject.Find("Ball");
-			Ball ballscript = ball.GetComponent<Ball>();
+		if(ui.onePlayerGame == true){
 			//sets ai to start racket direction randomly
 			Vector3 pos = transform.position;
 	    pos.y = Random.Range(-2, 2);
@@ -24,13 +24,14 @@ public class AI : MonoBehaviour {
 	    }
   	}
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
 		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
 		GameObject menu = GameObject.Find("GameScript");
 		UI ui = menu.GetComponent<UI>();
-		if (ui.onePlayerGame){
+		if(ui.onePlayerGame == true){
 			//references ball
 			GameObject ball = GameObject.Find("Ball");
 			Ball ballscript = ball.GetComponent<Ball>();

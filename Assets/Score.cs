@@ -233,6 +233,9 @@ public class Score : MonoBehaviour {
 									child.gameObject.SetActive(false);
 							}
 						}
+					if (gameOverClose){
+		        	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		      	}
 					break;
 				default:
 				//0
@@ -277,6 +280,9 @@ public class Score : MonoBehaviour {
 								}
 							}
 						}
+					if (gameOverClose){
+		        	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		      	}
 					break;
 				case 2:
 					Score2DoubDig.GetComponent<Renderer>().enabled = false;
@@ -387,7 +393,7 @@ public class Score : MonoBehaviour {
 									child.gameObject.SetActive(false);
 							}
 						}
-
+						
 					break;
 				default:
 				//0

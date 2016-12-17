@@ -45,11 +45,12 @@ public class UI : MonoBehaviour {
                 onePlayerGame = false;
                 Time.timeScale = 1;
           }
-
+          
      }
 
 	// Update is called once per frame
 	void Update () {
+
         mainMenuParent = GameObject.Find("MainMenuParent");
         if (Time.timeScale == 1){
             foreach (Transform child in mainMenuParent.transform){
