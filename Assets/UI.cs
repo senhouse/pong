@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
-	public GameObject pauseParent, mainMenuParent, pauseMenu, paused, options, mainMenu;
+	public GameObject pauseParent, mainMenuParent, creditsParent, pauseMenu, paused, options, mainMenu;
 	public bool gamePaused;
-	public bool onePlayerGame;
+  public bool showCredits = false;
+	//public bool onePlayerGame;
 
 	// Use this for initialization
 	void Start () {
@@ -14,12 +15,12 @@ public class UI : MonoBehaviour {
 		//resume = GameObject.Find("Resume");
 		options = GameObject.Find("Options");
 
-        mainMenuParent = GameObject.Find("MainMenuParent");
-        foreach (Transform child in mainMenuParent.transform)
-                {
-                    child.gameObject.SetActive(true);
-                }
-        Time.timeScale = 0;
+    mainMenuParent = GameObject.Find("MainMenuParent");
+    foreach (Transform child in mainMenuParent.transform){
+      child.gameObject.SetActive(true);
+    }
+    
+    Time.timeScale = 0;
 	}
 	
 	void OnMouseDown()
@@ -36,15 +37,25 @@ public class UI : MonoBehaviour {
                 gamePaused = false;
             }
           } else if(gameObject.tag == "Resume"){
-      			Time.timeScale = 1;
-      			gamePaused = false;
-          } else if(gameObject.tag == "OnePlayerButton"){
+          			Time.timeScale = 1;
+          			gamePaused = false;
+          } else if(gameObject.tag == "PlayButton"){
+                Time.timeScale = 1;
+          } else if(gameObject.tag == "CreditsButton"){
+                Time.timeScale = 0;
+                showCredits = true;
+          } else if(gameObject.tag == "CreditsMenu"){
+                Time.timeScale = 0;
+                showCredits = false;
+          } else if(gameObject.tag == "GameOverParent"){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+          }/*else if(gameObject.tag == "OnePlayerButton"){
                 onePlayerGame = true;
                 Time.timeScale = 1;
           } else if(gameObject.tag == "TwoPlayersButton"){
                 onePlayerGame = false;
                 Time.timeScale = 1;
-          }
+          }*/
           
      }
 
@@ -57,6 +68,16 @@ public class UI : MonoBehaviour {
                 child.gameObject.SetActive(false);
             }
         }
+        //creditsParent = GameObject.Find("CreditsParent");
+        // if (showCredits){
+        //     foreach (Transform child in creditsParent.transform){
+        //         child.gameObject.SetActive(true);
+        //     }
+        // } else if (showCredits == false){
+        //     foreach (Transform child in creditsParent.transform){
+        //         child.gameObject.SetActive(false);
+        //     }
+        // }
         pauseParent = GameObject.Find("PauseParent");
         foreach (Transform child in pauseParent.transform){
             if (Time.timeScale > 0) {
@@ -65,5 +86,7 @@ public class UI : MonoBehaviour {
                 child.gameObject.SetActive(true);
             }
         }
+
+    
 	}
 }
