@@ -1,35 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class AI : MonoBehaviour {
+public class AI:MonoBehaviour{
 
 	// Use this for initialization
-	void Start () {
-
-		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
-		//GameObject menu = GameObject.Find("GameScript");
-		//UI ui = menu.GetComponent<UI>();
-		//sets ai to start racket direction randomly
+	void Start(){
+		//sets ai to serve in a random direction
 		Vector3 pos = transform.position;
     pos.y = Random.Range(-2, 2);
     //ensures racket doesnt start at middle zero pos
-    Vector3 badPos = new Vector3 (23,0,0);
-    if (pos == badPos){
-    	Vector3 goodPos = new Vector3 (23,2,0);
+    Vector3 badPos = new Vector3(23,0,0);
+    if(pos == badPos){
+    	Vector3 goodPos = new Vector3(23,2,0);
     	transform.position = goodPos;
-    } else {
+    } else{
     	transform.position = pos;
     }
-
 	}
-
 	
 	// Update is called once per frame
-	void Update () {
-		//ui = GameObject.Find("MainMenuParent").GetComponent<UI>();
-		//GameObject menu = GameObject.Find("GameScript");
-		//UI ui = menu.GetComponent<UI>();
+	void Update(){
 		//references ball
 		GameObject ball = GameObject.Find("Ball");
 		Ball ballscript = ball.GetComponent<Ball>();

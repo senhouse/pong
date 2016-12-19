@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ball : MonoBehaviour {
+public class Ball:MonoBehaviour{
 	public float speed = 30;
 	public int player1Score = 0;
 	public int player2Score  = 0;
 
 	float hitFactor(Vector2 ballPos, Vector2 racketPos,
-					float racketHeight) {
+									float racketHeight){
 		// ascii art:
 		// ||  1 <- at the top of the racket
 		// ||
@@ -18,22 +18,20 @@ public class Ball : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start(){
 		// Initial Velocity
-    	GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+    GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
 	}
 
-	void OnCollisionEnter2D(Collision2D col) {
+	void OnCollisionEnter2D(Collision2D col){
 		// Note: 'col' holds the collision information. If the
     //   Ball collided with a racket, then:
     //   col.gameObject is the racket
     //   col.transform.position is the racket's position
     //   col.collider is the racket's collider
 
-
-
 		// Hit the left Racket?
-		if (col.gameObject.name == "RacketLeft") {
+		if(col.gameObject.name == "RacketLeft"){
 			// Calculate hit Factor
 			float y = hitFactor(transform.position,
 								col.transform.position,
@@ -47,7 +45,7 @@ public class Ball : MonoBehaviour {
 		}
 
 		// Hit the right Racket?
-		if (col.gameObject.name == "RacketRight"){
+		if(col.gameObject.name == "RacketRight"){
 			// Calculate hit Factor
 			float y = hitFactor(transform.position,
 								col.transform.position,
@@ -60,9 +58,8 @@ public class Ball : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = dir * speed;
 		}
 
-
 		//Hit Right Wall, add a point to Player 1, increase difficulty
-		if (col.gameObject.tag == "Player2Goal") {
+		if(col.gameObject.tag == "Player2Goal"){
 			player1Score += 1;
 			speed += 1;
 		}
@@ -73,5 +70,4 @@ public class Ball : MonoBehaviour {
 			speed += 1;
 		}
 	}
-
 }
